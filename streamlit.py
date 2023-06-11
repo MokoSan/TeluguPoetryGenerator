@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 import openai
 import os
 import streamlit as st
@@ -38,7 +37,6 @@ def display_messages() -> None:
 
 def run() -> None:
     if len(st.session_state) == 0:
-        load_dotenv()
         st.session_state["messages"] = [("Chat with me for topics to generate Telegu poetry for. తెలుగు కవిత్వాన్ని రూపొందించడానికి అంశాల కోసం నాతో చాట్ చేయండి", False)]
         st.session_state["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY") 
         openai.api_key = os.getenv("OPENAI_API_KEY") 
@@ -49,7 +47,7 @@ def run() -> None:
     st.markdown(""" <style>
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
-</style> """, unsafe_allow_html=True)
+</style> """, unsafe_allow_html=True )
     st.divider()
     st.text("Made by Moko.")
 
