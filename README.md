@@ -1,6 +1,6 @@
-# Telegu Poetry Generator
+# Telugu Poetry Generator
 
-This repo hosts code that generates Telegu Poetry with AI and uses Text to Speech to recite the Telegu poetry.This app is hosted [here](https://telegu-poetry.streamlit.app/).
+This repo hosts code that generates Telugu Poetry with AI and uses Text to Speech to recite the Telugu poetry.This app is hosted [here](https://telegu-poetry.streamlit.app/).
 
 ## Getting Started Locally
 
@@ -13,7 +13,7 @@ This repo hosts code that generates Telegu Poetry with AI and uses Text to Speec
 ### How to Run Locally
 
 1. Ensure you have python 3.8+.
-2. Clone the repo: ``git clone https://github.com/MokoSan/TeleguPoetryGenerator``.
+2. Clone the repo: ``git clone https://github.com/MokoSan/TeluguPoetryGenerator``.
 3. Install all the prerequistes using ``pip install -r app/requirements.txt`` (preferbly in a virtual environment).
 4. Ensure you have streamlit in your path.
 5. Copy the .env.example file into a .env file and enter your OpenAI API Key, Narkeet API Key, Supabase Url, Supabase Key.
