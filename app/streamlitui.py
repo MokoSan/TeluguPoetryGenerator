@@ -8,15 +8,13 @@ from streamlit_chat import message
 from dotenv import load_dotenv
 from supabase import create_client, Client
 
-#st.title("Enter Text To Generate a Short Telegu Poetry For. ఒక చిన్న తెలుగు కవితను రూపొందించడానికి వచనాన్ని నమోదు చేయండి.")
-
-def get_telegu_poetry(query) -> str:
-    query_to_extract_info = f"""Based on the main topic mentioned in the input delimited by ++++, generate a telegu poem and provide a translation. 
+def get_telugu_poetry(query) -> str:
+    query_to_extract_info = f"""Based on the main topic mentioned in the input delimited by ++++, generate a telugu poem and provide a translation. 
     The poem can be descriptive, colorful and filled with allegories.
     +++
     {query}
     """ 
-    messages = [{ "role": "system", "content": "You are a creative Telegu poetry generator bot that provides a translation for every poem."}]
+    messages = [{ "role": "system", "content": "You are a creative telugu poetry generator bot that provides a translation for every poem."}]
     messages.append( {"role": "user", "content": query_to_extract_info} )
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
@@ -32,8 +30,8 @@ def process_input():
             user_text = st.session_state["user_input"].strip()
             url = ""
             with st.session_state["thinking_spinner"], st.spinner(f"Generating Poetry"):
-                telegu_poetry = get_telegu_poetry(user_text)
-                poetry = telegu_poetry.split("Translation")[0]
+                telugu_poetry = get_telugu_poetry(user_text)
+                poetry = telugu_poetry.split("Translation")[0]
                 options = { 
                     'headers': { 'Accept': 'application/octet-stream', 'Content-Type': 'text/plain', 'x-api-key': os.getenv('NARKEET_API_KEY'), },
                     'data': poetry.encode('utf8')
@@ -46,7 +44,7 @@ def process_input():
                 url = supabase.storage.from_('poems').get_public_url(file_name)
 
             st.session_state["messages"].append((user_text, True))
-            st.session_state["messages"].append((telegu_poetry, False))
+            st.session_state["messages"].append((telugu_poetry, False))
             st.session_state["messages"].append((f'<audio controls src="{url}"></audio>', False))
     except Exception as ex:
         print(ex)
@@ -63,7 +61,7 @@ def display_messages() -> None:
 def run() -> None:
     if len(st.session_state) == 0:
         load_dotenv()
-        st.session_state["messages"] = [("Chat with me for topics to generate Telegu poetry for. తెలుగు కవిత్వాన్ని రూపొందించడానికి అంశాల కోసం నాతో చాట్ చేయండి", False)]
+        st.session_state["messages"] = [("Chat with me for topics to generate telugu poetry for. తెలుగు కవిత్వాన్ని రూపొందించడానికి అంశాల కోసం నాతో చాట్ చేయండి", False)]
         url: str = os.environ.get("SUPABASE_URL")
         key: str = os.environ.get("SUPABASE_KEY")
         supabase: Client = create_client(url, key)
@@ -72,7 +70,7 @@ def run() -> None:
         openai.api_key = os.getenv("OPENAI_API_KEY") 
     
     display_messages()
-    st.text_input("Enter a message for which Telegu poetry is to be generated for.", key="user_input", on_change=process_input, label_visibility='visible')
+    st.text_input("Enter a message for which telugu poetry is to be generated for.", key="user_input", on_change=process_input, label_visibility='visible')
 
     st.markdown(""" <style>
 #MainMenu {visibility: hidden;}
