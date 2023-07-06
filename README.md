@@ -1,6 +1,6 @@
 # Telugu Poetry Generator
 
-This repo hosts code that generates Telugu Poetry with AI and uses Text to Speech to recite the Telugu poetry.This app is hosted [here](https://telegu-poetry.streamlit.app/).
+This repo hosts code that generates Telugu Poetry with AI and uses Text to Speech to recite the Telugu poetry.This app is hosted [here](https://telugu-poetry.streamlit.app/).
 
 ## Getting Started Locally
 
